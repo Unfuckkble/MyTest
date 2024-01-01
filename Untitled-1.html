@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Cookie Notification</title>
+  </head>
+  <body>
+    <script>
+      function createCookieContainer() {
+        const isCookieAccepted =
+          localStorage.getItem('cookieAccepted') === 'true';
+
+        if (!isCookieAccepted && navigator.cookieEnabled) {
+          const cookieContainer = document.createElement('div');
+          cookieContainer.id = 'cookie-container';
+          cookieContainer.className = 'cookie-container';
+          cookieContainer.innerHTML = `
+            <p>Мы используем файлы cookie для улучшения вашего опыта. Продолжая использовать сайт, вы соглашаетесь на использование cookie.</p>
+            <button id="accept-cookie">Принять</button>
+        `;
+
+          document.body.appendChild(cookieContainer);
+
+          const acceptCookieButton = document.getElementById('accept-cookie');
+          acceptCookieButton.addEventListener('click', function () {
+            cookieContainer.style.display = 'none';
+
+            localStorage.setItem('cookieAccepted', true);
+          });
+
+          cookieContainer.style.display = 'block';
+        }
+      }
+
+      createCookieContainer();
+    </script>
+  </body>
+</html>
