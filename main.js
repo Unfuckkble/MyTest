@@ -44398,6 +44398,7 @@
         );
       },
       ms = function (e) {
+        console.log('Hide');
         var t = e.isHide,
           n = e.filterHide,
           a = e.setFilterHide,
@@ -44930,7 +44931,7 @@
           a = u(Object(r.useState)(''), 2),
           o = a[0],
           c = a[1];
-        
+
         localStorage.setItem('filterHide', t);
         return i.a.createElement(
           'div',
